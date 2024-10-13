@@ -24,7 +24,6 @@ export default function DashboardPage() {
           await syncUserWithDatabase(currentUser);
         } catch (error) {
           console.error('Failed to sync user:', error);
-          // Handle the error as needed (e.g., show an error message to the user)
         }
         setLoading(false);
       } else {

@@ -2,12 +2,6 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import Dashboard from '@/components/Dashboard'
-import { User } from "firebase/auth"
-
-interface DashboardProps {
-  user: User
-}
-
 
 export default function DashboardPage() {
   const { data: session, status } = useSession()
