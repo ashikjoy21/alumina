@@ -1,18 +1,13 @@
-import { getServerSession } from "next-auth/next"
-import { redirect } from "next/navigation"
-import { authOptions } from "@/lib/auth"
-import Dashboard from '@/components/Dashboard'
+import { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 
-export default async function DashboardPage() {
-  const session = await getServerSession(authOptions)
+const LoginPage = dynamic(() => import('@/components/LoginPage'), { ssr: false })
 
-  if (!session) {
-    redirect('/login')
-  }
+export const metadata: Metadata = {
+  title: 'Login | Alumina',
+  description: 'Login to your Alumina account',
+}
 
-  return (
-    <main>
-      <Dashboard />
-    </main>
-  )
+export default function Home() {
+  return <LoginPage />
 }
