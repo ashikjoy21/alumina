@@ -12,6 +12,11 @@ export default function DashboardPage() {
   const router = useRouter();
 
   useEffect(() => {
+    if (!auth) {
+      console.error("Auth is not initialized");
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
